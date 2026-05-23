@@ -4,17 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cocoworks Jewelry | Handmade Coconut Jewelry for Bulk Orders</title>
-  <meta name="description" content="Cocoworks creates premium handmade coconut shell jewelry for boutiques, retailers, gift shops, brands, and bulk buyers." />
-  <meta name="keywords" content="Cocoworks, coconut jewelry, handmade jewelry, sustainable jewelry, coconut shell jewelry, bulk jewelry orders, eco friendly jewelry" />
+  <meta name="description" content="Cocoworks creates premium handmade coconut shell jewelry for boutiques, retailers, gift shops, brands, and bulk buyers looking for sustainable coconut jewelry." />
+  <meta name="keywords" content="Cocoworks, coconut jewelry, handmade jewelry, sustainable jewelry, coconut shell jewelry, bulk jewelry orders, eco friendly jewelry, wholesale coconut jewelry" />
   <meta name="author" content="Cocoworks" />
   <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0f0b07" />
+  <link rel="canonical" href="https://ceyloncocoworks.ca/" />
 
   <meta property="og:title" content="Cocoworks Jewelry | Timeless Beauty Born From Nature" />
   <meta property="og:description" content="Premium handcrafted coconut jewelry for boutiques, retailers, gift shops, brands, and bulk buyers." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="cocoworks-hero.png" />
+  <meta property="og:url" content="https://ceyloncocoworks.ca/" />
+  <meta property="og:image" content="https://ceyloncocoworks.ca/cocoworks-hero.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cocoworks Jewelry | Handmade Coconut Jewelry" />
+  <meta name="twitter:description" content="Premium handmade coconut shell jewelry for bulk buyers, boutiques, retailers, and brands." />
+  <meta name="twitter:image" content="https://ceyloncocoworks.ca/cocoworks-hero.png" />
 
-  <!-- Browser tab logo / favicon. Keep logo.jpg in the same folder as this HTML file. -->
   <link rel="icon" type="image/jpeg" href="logo.jpg" />
   <link rel="shortcut icon" type="image/jpeg" href="logo.jpg" />
   <link rel="apple-touch-icon" href="logo.jpg" />
@@ -36,6 +42,7 @@
     - logo.jpg
   -->
 
+  <link rel="preload" as="image" href="cocoworks-hero.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -288,6 +295,7 @@
       z-index: 4;
       padding: 100px 0 170px;
       max-width: 660px;
+      animation: heroFadeUp 1s ease both;
     }
 
     .eyebrow {
@@ -364,6 +372,12 @@
       padding: 34px 30px;
       border-right: 1px solid rgba(28, 18, 11, 0.18);
       align-items: start;
+      transition: transform 0.35s ease, background 0.35s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      background: #f8efe3;
     }
 
     .feature-card:last-child {
@@ -580,7 +594,7 @@
     .process {
       background:
         linear-gradient(rgba(15, 11, 7, 0.92), rgba(15, 11, 7, 0.94)),
-        url("coconut-texture.jpg") center / cover fixed no-repeat;
+        url("coconut-texture.jpg") center / cover no-repeat;
       padding: 105px 0;
     }
 
@@ -818,6 +832,75 @@
 
     .footer-links a:hover {
       color: var(--gold-light);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+      will-change: opacity, transform;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .story-card,
+    .product-card,
+    .step,
+    .bulk-box {
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .product-card:hover,
+    .step:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 58px rgba(58, 32, 18, 0.13);
+    }
+
+    .story-card-content,
+    .product-content,
+    .step > div:last-child {
+      animation: softFade 0.8s ease both;
+    }
+
+    @keyframes heroFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes softFade {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
     }
 
     @media (max-width: 1280px) {
@@ -1193,7 +1276,7 @@
     </div>
   </header>
 
-  <section class="features-strip" id="why">
+  <section class="features-strip reveal" id="why">
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">🌴</div>
@@ -1229,7 +1312,7 @@
     </div>
   </section>
 
-  <section class="story-section" id="story">
+  <section class="story-section reveal" id="story">
     <div class="story-intro">
       <div class="section-label">Our Story</div>
       <h2>From Coconuts to Creations</h2>
@@ -1241,7 +1324,7 @@
     </div>
 
     <div class="story-card">
-      <img src="natural-materials.jpg" alt="Coconut shells used for handmade jewelry" />
+      <img src="natural-materials.jpg" alt="Coconut shells used for handmade jewelry" loading="lazy" decoding="async" />
       <div class="story-card-content">
         <h3>Natural Materials</h3>
         <p>We use coconut shells to reduce waste and create elegant natural pieces.</p>
@@ -1249,7 +1332,7 @@
     </div>
 
     <div class="story-card">
-      <img src="artisan-crafting.jpg" alt="Artisan crafting coconut jewelry by hand" />
+      <img src="artisan-crafting.jpg" alt="Artisan crafting coconut jewelry by hand" loading="lazy" decoding="async" />
       <div class="story-card-content">
         <h3>Skilled Artisans</h3>
         <p>Every piece is handcrafted with patience, precision, and passion.</p>
@@ -1257,7 +1340,7 @@
     </div>
 
     <div class="story-card">
-      <img src="jewelry-packaging.jpg" alt="Coconut jewelry displayed in premium packaging" />
+      <img src="jewelry-packaging.jpg" alt="Coconut jewelry displayed in premium packaging" loading="lazy" decoding="async" />
       <div class="story-card-content">
         <h3>Meaningful Impact</h3>
         <p>Our jewelry supports people, protects nature, and brings beauty to everyday life.</p>
@@ -1265,7 +1348,7 @@
     </div>
   </section>
 
-  <section class="collections" id="collections">
+  <section class="collections reveal" id="collections">
     <div class="container">
       <div class="section-header">
         <div>
@@ -1281,7 +1364,7 @@
       <div class="product-grid">
         <article class="product-card">
           <div class="product-image">
-            <img src="coconut-necklaces.jpg" alt="Handmade coconut shell necklaces" />
+            <img src="coconut-necklaces.jpg" alt="Handmade coconut shell necklaces" loading="lazy" decoding="async" />
           </div>
           <div class="product-content">
             <h3>Necklaces</h3>
@@ -1296,7 +1379,7 @@
 
         <article class="product-card">
           <div class="product-image">
-            <img src="coconut-earrings.jpg" alt="Handmade coconut shell earrings" />
+            <img src="coconut-earrings.jpg" alt="Handmade coconut shell earrings" loading="lazy" decoding="async" />
           </div>
           <div class="product-content">
             <h3>Earrings</h3>
@@ -1311,7 +1394,7 @@
 
         <article class="product-card">
           <div class="product-image">
-            <img src="coconut-bracelets.jpg" alt="Handmade coconut shell bracelets and bangles" />
+            <img src="coconut-bracelets.jpg" alt="Handmade coconut shell bracelets and bangles" loading="lazy" decoding="async" />
           </div>
           <div class="product-content">
             <h3>Bracelets</h3>
@@ -1327,7 +1410,7 @@
     </div>
   </section>
 
-  <section class="process" id="process">
+  <section class="process reveal" id="process">
     <div class="container process-grid">
       <div class="process-copy">
         <div class="section-label">Craftsmanship</div>
@@ -1375,7 +1458,7 @@
     </div>
   </section>
 
-  <section class="bulk-section" id="contact">
+  <section class="bulk-section reveal" id="contact">
     <div class="container">
       <div class="bulk-box">
         <div class="bulk-image" aria-label="Premium coconut jewelry collection"></div>
@@ -1389,14 +1472,15 @@
           </p>
 
           <div class="contact-list">
-            <a class="contact-item" href="tel:+16137943838">☏ Call / WhatsApp: +16137943838</a>
+            <a class="contact-item" href="tel:+16137943838">☏ Call / WhatsApp: +1 613 794 3838</a>
             <a class="contact-item" href="mailto:cocoworksinc@hotmail.com">✉ Email: cocoworksinc@hotmail.com</a>
           </div>
 
-        <form id="bulkInquiryForm" action="https://api.web3forms.com/submit" method="POST">hidden" name="access_key" value="6381938b-d1f9-4989-836f-48debe48bab9" />
+          <form id="bulkInquiryForm" action="https://api.web3forms.com/submit" method="POST" autocomplete="off">
+            <input type="hidden" name="access_key" value="6381938b-d1f9-4989-836f-48debe48bab9" />
             <input type="hidden" name="subject" value="New Cocoworks Bulk Order Inquiry" />
             <input type="hidden" name="from_name" value="Cocoworks Website" />
-<input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
 
             <div class="form-row">
               <input type="text" name="name" placeholder="Your Name" required />
@@ -1439,15 +1523,15 @@
     </div>
   </section>
 
-  <section class="footer-cta">
+  <section class="footer-cta reveal">
     <div class="container footer-cta-inner">
       <div class="footer-title">Looking to source coconut jewelry? <span>Let’s talk.</span></div>
 
-      <a class="footer-contact" href="tel: +16137943838">
+      <a class="footer-contact" href="tel:+16137943838">
         <span class="footer-contact-icon">☏</span>
         <span>
           <small>Call / WhatsApp</small>
-          <p>+16137943838</p>
+          <p>+1 613 794 3838</p>
         </span>
       </a>
 
@@ -1474,13 +1558,62 @@
       </div>
     </div>
   </footer>
-<script>
-  window.addEventListener("pageshow", function () {
-    const form = document.getElementById("bulkInquiryForm");
-    if (form) {
+
+  <script>
+    function clearBulkInquiryForm() {
+      const form = document.getElementById("bulkInquiryForm");
+
+      if (!form) return;
+
       form.reset();
+
+      const fields = form.querySelectorAll("input, textarea, select");
+
+      fields.forEach(function (field) {
+        if (field.type !== "hidden" && field.type !== "checkbox") {
+          field.value = "";
+        }
+
+        if (field.tagName === "SELECT") {
+          field.selectedIndex = 0;
+        }
+
+        if (field.type === "checkbox") {
+          field.checked = false;
+        }
+      });
     }
-  });
-</script>
+
+    window.addEventListener("pageshow", function () {
+      setTimeout(clearBulkInquiryForm, 100);
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      clearBulkInquiryForm();
+
+      const revealItems = document.querySelectorAll(".reveal");
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.12
+        });
+
+        revealItems.forEach(function (item) {
+          observer.observe(item);
+        });
+      } else {
+        revealItems.forEach(function (item) {
+          item.classList.add("is-visible");
+        });
+      }
+    });
+  </script>
 </body>
 </html>
