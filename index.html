@@ -1393,8 +1393,7 @@
             <a class="contact-item" href="mailto:cocoworksinc@hotmail.com">✉ Email: cocoworksinc@hotmail.com</a>
           </div>
 
-          <form action="https://api.web3forms.com/submit" method="POST">
-           <input type="hidden" name="access_key" value="6381938b-d1f9-4989-836f-48debe48bab9" />
+        <form id="bulkInquiryForm" action="https://api.web3forms.com/submit" method="POST">hidden" name="access_key" value="6381938b-d1f9-4989-836f-48debe48bab9" />
             <input type="hidden" name="subject" value="New Cocoworks Bulk Order Inquiry" />
             <input type="hidden" name="from_name" value="Cocoworks Website" />
 <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
@@ -1475,5 +1474,13 @@
       </div>
     </div>
   </footer>
+<script>
+  window.addEventListener("pageshow", function () {
+    const form = document.getElementById("bulkInquiryForm");
+    if (form) {
+      form.reset();
+    }
+  });
+</script>
 </body>
 </html>
