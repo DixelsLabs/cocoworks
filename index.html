@@ -146,6 +146,15 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.09);
     }
 
+    .navbar.is-sticky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: var(--dark);
+    }
+
     .nav-inner {
       display: grid;
       grid-template-columns: auto 1fr auto;
@@ -1549,7 +1558,10 @@
 
   <footer>
     <div class="container footer-inner">
-      <p>© 2026 Cocoworks. All rights reserved.</p>
+      <div>
+        <p>© 2026 Cocoworks. All rights reserved.</p>
+        <p>Website by <a href="https://dixelsmedia.ca/">Dixels Media</a></p>
+      </div>
       <div class="footer-links">
         <a href="#home">Home</a>
         <a href="#story">Our Story</a>
@@ -1560,6 +1572,24 @@
   </footer>
 
   <script>
+    const navbar = document.querySelector(".navbar");
+    const navbarPlaceholder = document.createElement("div");
+    navbar.before(navbarPlaceholder);
+    navbarPlaceholder.appendChild(navbar);
+
+    function updateStickyNavbar() {
+      navbarPlaceholder.style.height = navbar.offsetHeight + "px";
+      navbar.classList.toggle("is-sticky", navbarPlaceholder.getBoundingClientRect().top <= 0);
+    }
+
+    window.addEventListener("scroll", updateStickyNavbar, { passive: true });
+    window.addEventListener("resize", updateStickyNavbar);
+    window.addEventListener("load", updateStickyNavbar);
+    if ("ResizeObserver" in window) {
+      new ResizeObserver(updateStickyNavbar).observe(navbar);
+    }
+    updateStickyNavbar();
+
     function clearBulkInquiryForm() {
       const form = document.getElementById("bulkInquiryForm");
 
